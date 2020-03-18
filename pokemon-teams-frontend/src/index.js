@@ -67,15 +67,13 @@ function deletepokemon(event) {
 }
 
 function addpokemon(event) {
-  console.dir(event.target.parentNode.dataset.id)
 if (event.target.parentNode.dataset.numpokemon < 6) {
-  console.log("in the if")
   fetch(POKEMONS_URL, {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
       },
-      body: {"trainer_id": event.target.dataset.trainerid}
+      body: JSON.stringify({"trainer_id": event.target.parentNode.dataset.id})
   }).then((response) => {
     return response.json();
   })
